@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/blue"
+    android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.veterinaria16.Activity.RegisterAnimalActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+        />
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="56dp"
+            app:srcCompat="@drawable/icon_login"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registro_do_animal"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="0dp"
+            />
+
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:ems="10"
+            android:layout_marginTop="15dp"
+            android:inputType="text"
+            android:hint="@string/nome_opcional"
+            android:textColor="@color/black"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"
+            />
+
+        <EditText
+            android:id="@+id/peso"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:ems="10"
+            android:layout_marginTop="15dp"
+            android:inputType="text"
+            android:hint="@string/peso"
+            android:textColor="@color/black"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"
+            />
+
+        <EditText
+            android:id="@+id/dataNascimento"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:ems="10"
+            android:layout_marginTop="15dp"
+            android:inputType="phone"
+            android:hint="@string/data_de_nascimento"
+            android:textColor="@color/black"
+            android:background="@drawable/edittext_bg"
+            android:padding="16dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/qual_categoria"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            />
+
+        <RadioGroup
+            android:id="@+id/speciesRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <RadioButton
+                android:id="@+id/cachorroRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/caozinho"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/gatoRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gatinho"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp" />
+
+            <RadioButton
+                android:id="@+id/aveRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ave"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp" />
+
+            <RadioButton
+                android:id="@+id/pecuariaRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/criacao"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp" />
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/moreSpeciesRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp">
+
+            <RadioButton
+                android:id="@+id/cobraRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cobra"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp" />
+
+            <RadioButton
+                android:id="@+id/lagomorfoRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lagomorfo"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp" />
+
+            <RadioButton
+                android:id="@+id/roedorRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/roedor"
+                android:textColor="@color/white"
+                android:layout_marginStart="20dp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="0dp"
+            android:text="@string/qual_o_sexo"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
+
+        <RadioGroup
+            android:id="@+id/sexRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/maleRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masculino"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp" />
+
+        <RadioButton
+            android:id="@+id/femaleRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feminino"
+            android:textColor="@color/white"
+            android:layout_marginStart="20dp" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_gravity="start|top"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="@color/dark_blue"
+            android:text="@string/registrar"
+            android:textSize="22sp"
+            />
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_gravity="start|top"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="@color/red"
+            android:text="Cancelar"
+            android:textSize="22sp"
+            />
+
+    </LinearLayout>
+</ScrollView>

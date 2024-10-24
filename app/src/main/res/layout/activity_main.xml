@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.veterinaria16.Activity.MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_halo"
+        android:scaleType="fitCenter"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="360dp"
+        android:layout_height="455dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="400dp"
+        android:src="@drawable/veterinaria"
+        app:layout_anchor="@+id/imageView"
+        app:layout_anchorGravity="bottom|end" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|top"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="189dp"
+        android:text="@string/seu_pet"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="210dp"
+        android:layout_height="80dp"
+        android:layout_gravity="start|top"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/dark_blue"
+        android:text="@string/vamos_iniciar"
+        android:textSize="22sp"
+        android:drawableEnd="@drawable/seta"
+        />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
