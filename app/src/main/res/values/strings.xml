@@ -78,10 +78,13 @@
     <string name="caozinho">Cachorro</string>
     <string name="gatinho">Gato</string>
     <string name="ave">Ave</string>
-    <string name="criacao">Criação da pecuária</string>
+    <string name="criacao">Pecuária</string>
     <string name="cobra">Cobra</string>
     <string name="lagomorfo">Lagomorfo</string>
     <string name="roedor">Roedor</string>
     <string name="nome_opcional">Nome (opcional)</string>
     <string name="qual_o_sexo">Qual o sexo?</string>
+    <string name="cancel">Cancelar</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
 </resources>

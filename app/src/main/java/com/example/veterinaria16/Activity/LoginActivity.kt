@@ -30,7 +30,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.registrarCliente.setOnClickListener {
-            intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            intent = Intent(this@LoginActivity, RegisterAnimalActivity::class.java)
             startActivity(intent)
             Toast.makeText(this, "Encaminhando para tela de registro!", Toast.LENGTH_SHORT).show()
         }

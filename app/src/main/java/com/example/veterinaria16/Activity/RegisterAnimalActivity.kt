@@ -13,26 +13,19 @@ class RegisterAnimalActivity : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
     private lateinit var intent : Intent
 
-    private var name = binding.name
-    private var birthday = binding.dataNascimento
-    private var weight = binding.peso
-    private var category = binding.speciesRadioGroup
-    private var category1 = binding.moreSpeciesRadioGroup
-    private var sex = binding.sexRadioGroup
-    private var register = binding.registerBtn
-    private var cancel = binding.cancelBtn
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterAnimalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var register = binding.registerBtn
+        var cancel = binding.cancelBtn
+
         register.setOnClickListener {
             val name = binding.name.text.toString().trim()
-            val birthday = binding.dataNascimento.toString().trim()
-            val weight = binding.peso.toString().trim()
+            val birthday = binding.birthday.toString().trim()
+            val weight = binding.weight.toString().trim()
             val category = binding.speciesRadioGroup.toString().trim()
-            val category1 = binding.moreSpeciesRadioGroup.toString().trim()
             val sex = binding.sexRadioGroup.toString().trim()
 
             if (validateWeight()) {
@@ -51,7 +44,7 @@ class RegisterAnimalActivity : AppCompatActivity() {
     }
 
     private fun validateWeight() : Boolean {
-        val isValidWeight = weight.text.any { it.isDigit()}
+        val isValidWeight = binding.weight.text.any { it.isDigit()}
 
         if (isValidWeight) {
             return true

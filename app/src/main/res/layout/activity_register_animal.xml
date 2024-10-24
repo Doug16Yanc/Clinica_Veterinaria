@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
-        />
+        android:padding="16dp"
+        tools:ignore="ExtraText">
 
         <ImageView
             android:layout_width="250dp"
@@ -47,12 +47,12 @@
             />
 
         <EditText
-            android:id="@+id/peso"
+            android:id="@+id/weight"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:ems="10"
             android:layout_marginTop="15dp"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             android:hint="@string/peso"
             android:textColor="@color/black"
             android:background="@drawable/edittext_bg"
@@ -60,7 +60,7 @@
             />
 
         <EditText
-            android:id="@+id/dataNascimento"
+            android:id="@+id/birthday"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:ems="10"
@@ -87,74 +87,78 @@
             android:id="@+id/speciesRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_marginTop="5dp">
 
-            <RadioButton
-                android:id="@+id/cachorroRadioButton"
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/caozinho"
-                android:textColor="@color/white" />
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/gatoRadioButton"
-                android:layout_width="wrap_content"
+                <RadioButton
+                    android:id="@+id/cachorroRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/caozinho"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/gatoRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gatinho"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20dp" />
+
+                <RadioButton
+                    android:id="@+id/aveRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ave"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20dp" />
+
+                <RadioButton
+                    android:id="@+id/pecuariaRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/criacao"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/gatinho"
-                android:textColor="@color/white"
-                android:layout_marginStart="20dp" />
+                android:orientation="horizontal"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="1dp">
 
-            <RadioButton
-                android:id="@+id/aveRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ave"
-                android:textColor="@color/white"
-                android:layout_marginStart="20dp" />
+                <RadioButton
+                    android:id="@+id/cobraRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cobra"
+                    android:textColor="@color/white" />
 
-            <RadioButton
-                android:id="@+id/pecuariaRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/criacao"
-                android:textColor="@color/white"
-                android:layout_marginStart="20dp" />
+                <RadioButton
+                    android:id="@+id/lagomorfoRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lagomorfo"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20dp" />
 
-        </RadioGroup>
-
-        <RadioGroup
-            android:id="@+id/moreSpeciesRadioGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp">
-
-            <RadioButton
-                android:id="@+id/cobraRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cobra"
-                android:textColor="@color/white"
-                android:layout_marginStart="20dp" />
-
-            <RadioButton
-                android:id="@+id/lagomorfoRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lagomorfo"
-                android:textColor="@color/white"
-                android:layout_marginStart="20dp" />
-
-            <RadioButton
-                android:id="@+id/roedorRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/roedor"
-                android:textColor="@color/white"
-                android:layout_marginStart="20dp" />
-
+                <RadioButton
+                    android:id="@+id/roedorRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/roedor"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="20dp" />
+            </LinearLayout>
         </RadioGroup>
 
         <TextView
@@ -180,7 +184,7 @@
             android:id="@+id/maleRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masculino"
+            android:text="@string/masculino"
             android:textColor="@color/white"
             android:layout_marginStart="20dp" />
 
@@ -188,7 +192,7 @@
             android:id="@+id/femaleRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feminino"
+            android:text="@string/feminino"
             android:textColor="@color/white"
             android:layout_marginStart="20dp" />
 
@@ -214,7 +218,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="6dp"
             android:backgroundTint="@color/red"
-            android:text="Cancelar"
+            android:text="@string/cancel"
             android:textSize="22sp"
             />
 
