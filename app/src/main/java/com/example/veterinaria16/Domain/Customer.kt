@@ -6,6 +6,5 @@ data class Customer(
     val CPF : String = "",
     val Telephone : String = "",
     val Email : String = "",
-    val Senha : String = "",
-    val mutableList: MutableList<Animal>?
+    val mutableList: MutableList<Animal> = mutableListOf()
 )

@@ -15,10 +15,7 @@ import com.example.veterinaria16.Domain.Veterinary
 class TopVeterinariesAdapter(val items : MutableList<Veterinary>) : RecyclerView.Adapter<TopVeterinariesAdapter.Viewholder>() {
     private var context : Context?=null
 
-    class Viewholder(val binding : ViewholderTopVeterinariesBinding):
-        RecyclerView.ViewHolder(binding.root) {
-
-    }
+    class Viewholder(val binding : ViewholderTopVeterinariesBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
         context=parent.context

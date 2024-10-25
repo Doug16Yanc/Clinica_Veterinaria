@@ -5,12 +5,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import clinica.veterinaria16.databinding.ActivityRegisterBinding
+import com.example.veterinaria16.Domain.Customer
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityRegisterBinding
     private lateinit var auth : FirebaseAuth
+    private lateinit var database : DatabaseReference
     private lateinit var intent : Intent
 
 
@@ -42,6 +45,7 @@ class RegisterActivity : AppCompatActivity() {
         cancel.setOnClickListener {
             intent = Intent(this@RegisterActivity, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -52,8 +56,41 @@ class RegisterActivity : AppCompatActivity() {
         email: String,
         password: String
     ) {
+
+        val id = (10000..900000).random()
+
+        database.child(id.toString())
+        auth = FirebaseAuth.getInstance()
+
+
+        if (binding.password.text.toString() == binding.confirmPassword.text.toString()) {
+
+            auth.createUserWithEmailAndPassword(
+                binding.email.text.toString(),
+                binding.password.text.toString()
+            )
+                .addOnCompleteListener(this){
+                    task ->
+                    if (task.isSuccessful) {
+                        val customer = Customer(id, name, cpf, telephone, email, mutableListOf())
+                        database.child("Customer").setValue(customer).addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(
+                                    this,
+                                    "Cliente registrado com sucesso",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                Toast.makeText(this, "Erro ao salvar dados de cliente.", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+                    }
+                }
+        }
         clearFields()
     }
+
 
     fun validateName(): Boolean {
         val isNameValid = binding.name.text.isNotEmpty()

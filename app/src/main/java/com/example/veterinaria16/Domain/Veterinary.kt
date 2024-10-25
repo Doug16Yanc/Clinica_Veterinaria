@@ -10,6 +10,7 @@ data class Veterinary(
     private val Id : Int = 0,
     val Telephone : String = "",
     val Name : String = "",
+    val Speciality : String = "",
     val Image : String = "",
     val Rating : Double = 0.0,
     val Site : String = ""
@@ -22,10 +23,11 @@ data class Veterinary(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
+      //  parcel.readString()?.let { Category.valueOf(it) },
+        parcel.readString().toString(),
         parcel.readDouble(),
         parcel.readString().toString()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(Address)
@@ -34,6 +36,7 @@ data class Veterinary(
         parcel.writeInt(Id)
         parcel.writeString(Telephone)
         parcel.writeString(Name)
+        parcel.writeString(Speciality)
         parcel.writeString(Image)
         parcel.writeDouble(Rating)
         parcel.writeString(Site)

@@ -87,4 +87,10 @@
     <string name="cancel">Cancelar</string>
     <string name="masculino">Masculino</string>
     <string name="feminino">Feminino</string>
+    <string name="reset_password">Redefinição de senha</string>
+    <string name="redefinir">Redefinir</string>
+    <string name="retornar">Retornar</string>
+    <string name="curiosidade">Curiosidade</string>
+    <string name="curiosidades">Curiosidades</string>
+    <string name="especialidad">Especialidade</string>
 </resources>

@@ -29,6 +29,11 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        binding.redefinirSenha.setOnClickListener {
+            intent = Intent(this@LoginActivity, ResetPasswordActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(this, "Encaminhando para tela de redefinição de senha!", Toast.LENGTH_SHORT).show()
+        }
         binding.registrarCliente.setOnClickListener {
             intent = Intent(this@LoginActivity, RegisterAnimalActivity::class.java)
             startActivity(intent)
