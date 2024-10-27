@@ -93,4 +93,7 @@
     <string name="curiosidade">Curiosidade</string>
     <string name="curiosidades">Curiosidades</string>
     <string name="especialidad">Especialidade</string>
+    <string name="meus_dados">Meus dados</string>
+    <string name="meus_animais">Meus animais</string>
+    <string name="sair">Sair</string>
 </resources>

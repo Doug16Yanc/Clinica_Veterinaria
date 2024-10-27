@@ -163,7 +163,7 @@
                     android:layout_height="55dp"
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="240dp"
-                    app:srcCompat="@drawable/call"
+                    app:srcCompat="@drawable/telephone"
                     />
                 <ImageView
                     android:id="@+id/message"

@@ -1,5 +1,6 @@
 package com.example.veterinaria16.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,19 @@ class IntroActivity : AppCompatActivity() {
 
         initCategory()
         initTopVeterinaries()
+
+        binding.settings.setOnClickListener {
+
+        }
+        binding.animals.setOnClickListener {
+            val intent = Intent(this@IntroActivity, RegisterAnimalActivity::class.java)
+            startActivity(intent)
+        }
+        binding.animals.setOnClickListener {
+            val intent = Intent(this@IntroActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun initCategory() {
