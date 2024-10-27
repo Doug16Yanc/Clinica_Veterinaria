@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.veterinaria16.Activity.ConsultaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="420dp"
+            android:layout_height="450dp"
+            android:background="@color/blue">
+
+            <ImageView
+                android:id="@+id/doctor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@drawable/doctor" />
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@drawable/volta"
+                />
+
+            <ImageView
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="300dp"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@drawable/favorita"
+                />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="435dp"
+            android:background="@drawable/white_bg_top_corner">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="14dp"
+                android:text="@string/nome_do_animal"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/nome_animal"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginStart="20dp"
+                android:text="@string/nome_do_animal"
+                android:textSize="15sp"
+                android:textColor="@color/grey"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="@string/peso_do_animal"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/peso_animal"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginStart="20dp"
+                android:text="@string/peso_do_animal"
+                android:textSize="15sp"
+                android:textColor="@color/grey"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="@string/data_de_nascimento"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/categoria_animal"
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginStart="20dp"
+                android:text="@string/data_de_nascimento"
+                android:textSize="15sp"
+                android:textColor="@color/grey"
+                />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:text="@string/categoria_ordem_esp_cie"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    />
+
+                <EditText
+                    android:id="@+id/sexo_animal"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edit_text_background"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/sexo_do_animal"
+                    android:textSize="15sp"
+                    android:textColor="@color/grey"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:text="@string/sexo_do_animal"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    />
+
+                <EditText
+                    android:id="@+id/nascimento_animal"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/edit_text_background"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/sexo_do_animal"
+                    android:textSize="15sp"
+                    android:textColor="@color/grey"
+                    />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button"
+                android:layout_width="340dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="386dp"
+                android:background="@drawable/rounded_background_button"
+                android:text="@string/agendar_consulta_do_pet"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -96,4 +96,11 @@
     <string name="meus_dados">Meus dados</string>
     <string name="meus_animais">Meus animais</string>
     <string name="sair">Sair</string>
+    <string name="seus_animais">Seus animais</string>
+    <string name="nome_do_animal">Nome do animal</string>
+    <string name="peso_do_animal">Peso do animal</string>
+    <string name="categoria_ordem_esp_cie">Categoria/ordem/espécie</string>
+    <string name="sexo_do_animal">Sexo do animal</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="cpf">CPF</string>
 </resources>

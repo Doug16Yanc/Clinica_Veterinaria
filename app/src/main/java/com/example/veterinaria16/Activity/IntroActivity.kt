@@ -25,13 +25,14 @@ class IntroActivity : AppCompatActivity() {
         initTopVeterinaries()
 
         binding.settings.setOnClickListener {
-
+            val intent = Intent(this@IntroActivity, SettingsActivity::class.java)
+            startActivity(intent)
         }
         binding.animals.setOnClickListener {
             val intent = Intent(this@IntroActivity, RegisterAnimalActivity::class.java)
             startActivity(intent)
         }
-        binding.animals.setOnClickListener {
+        binding.logout.setOnClickListener {
             val intent = Intent(this@IntroActivity, MainActivity::class.java)
             startActivity(intent)
             finish()

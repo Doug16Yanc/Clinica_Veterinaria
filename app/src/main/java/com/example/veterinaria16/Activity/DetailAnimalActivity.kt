@@ -23,8 +23,8 @@ class DetailAnimalActivity : AppCompatActivity() {
         item = intent.getParcelableExtra("Object") ?: return
 
         binding.apply {
-            //curiosity.text = item.Name
-          //  textCuriosity.text = item.Curiosity
+            curiosity.text = item.Name
+            textCuriosity.text = item.Curiosity
             back.setOnClickListener {
                 finish()
             }
