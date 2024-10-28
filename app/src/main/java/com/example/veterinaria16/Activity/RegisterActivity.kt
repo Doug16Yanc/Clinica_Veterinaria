@@ -162,7 +162,8 @@ class RegisterActivity : AppCompatActivity() {
     fun validatePassword(): Boolean {
         val password = binding.password
         val isPasswordValid =
-            password.text.isNotEmpty() && password.text.length <= 12 && password.text.any { it.isUpperCase() } && password.text.any { it.isDigit() }
+            password.text.isNotEmpty() && password.text.length <= 6
+          //  password.text.isNotEmpty() && password.text.length <= 12 && password.text.any { it.isUpperCase() } && password.text.any { it.isDigit() }
 
         if (isPasswordValid) {
             return true

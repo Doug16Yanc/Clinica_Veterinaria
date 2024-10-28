@@ -26,7 +26,7 @@
             android:exported="false"
             android:theme="@style/Theme.MyApplication" />
         <activity
-            android:name="com.example.veterinaria16.Activity.DetailAnimaActivity"
+            android:name="com.example.veterinaria16.Activity.DetailAnimalActivity"
             android:exported="false"
             android:theme="@style/Theme.MyApplication" />
         <activity

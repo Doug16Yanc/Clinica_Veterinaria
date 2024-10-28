@@ -27,8 +27,7 @@ class CategoryAdapter(val items: MutableList<AnimalCategory>) :
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
-        val item = items[position]
-        holder.binding.titleTxt.text = item.Name
+        holder.binding.titleTxt.text = items[position].Name
 
         Glide.with(holder.itemView.context)
             .load(items[position].Image)

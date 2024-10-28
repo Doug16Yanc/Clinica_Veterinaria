@@ -4,22 +4,23 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class AnimalCategory(
-    val Id : Int = 0,
-    val Name : String = "",
     val Curiosity : String = "",
-    val Image: String = ""
+    private val Id : Int = 0,
+    val Image: String = "",
+    val Name : String = ""
 ) : Parcelable {
-   constructor(parcel : Parcel) : this (
-       parcel.readInt(),
-       parcel.readString().toString(),
-       parcel.readString().toString(),
-       parcel.readString().toString()
-   )
+    constructor(parcel: Parcel) : this(
+        parcel.readString().toString(),
+        parcel.readInt(),
+        parcel.readString().toString(),
+        parcel.readString().toString()
+    )
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(Id)
-        parcel.writeString(Name)
         parcel.writeString(Curiosity)
+        parcel.writeInt(Id)
         parcel.writeString(Image)
+        parcel.writeString(Name)
     }
 
     override fun describeContents(): Int {
@@ -35,4 +36,5 @@ data class AnimalCategory(
             return arrayOfNulls(size)
         }
     }
+
 }

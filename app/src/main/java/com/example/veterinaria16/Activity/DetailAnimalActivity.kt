@@ -1,6 +1,7 @@
 package com.example.veterinaria16.Activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import clinica.veterinaria16.databinding.ActivityDetailAnimalBinding
 import com.bumptech.glide.Glide
@@ -20,18 +21,23 @@ class DetailAnimalActivity : AppCompatActivity() {
     }
 
     private fun getBundle() {
-        item = intent.getParcelableExtra("Object") ?: return
+        val item = intent.getParcelableExtra<AnimalCategory>("Object")
+        if (item != null) {
+            binding.apply {
+                curiosity.text = item.Name
+                textCuriosity.text = item.Curiosity
+                back.setOnClickListener {
+                    finish()
+                }
 
-        binding.apply {
-            curiosity.text = item.Name
-            textCuriosity.text = item.Curiosity
-            back.setOnClickListener {
-                finish()
+                Glide.with(this@DetailAnimalActivity)
+                    .load(item.Image)
+                    .into(binding.animal)
             }
-
-            Glide.with(this@DetailAnimalActivity)
-                .load(item.Image)
-                .into(binding.animal)
+        } else {
+            Toast.makeText(this, "Erro ao carregar detalhes do animal", Toast.LENGTH_SHORT).show()
+            finish()
         }
+
     }
 }

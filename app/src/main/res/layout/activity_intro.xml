@@ -124,8 +124,8 @@
             android:layout_marginTop="0dp"/>
 
         <LinearLayout
-            android:layout_width="340dp"
-            android:layout_height="150dp"
+            android:layout_width="350dp"
+            android:layout_height="110dp"
             android:orientation="horizontal"
             android:background="@drawable/icons_background"
             >

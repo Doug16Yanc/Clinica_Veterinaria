@@ -40,14 +40,16 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun initCategory() {
-        binding.progressBar1.visibility = View.VISIBLE
-        viewModel.category.observe(this@IntroActivity, Observer {
-            binding.viewCategory.layoutManager =
-                LinearLayoutManager(this@IntroActivity, LinearLayoutManager.HORIZONTAL, false)
-            binding.viewCategory.adapter = CategoryAdapter(it)
-            binding.progressBar1.visibility = View.GONE
-        })
-        viewModel.loadCategory()
+        binding.apply {
+            progressBar1.visibility = View.VISIBLE
+            viewModel.category.observe(this@IntroActivity, Observer {
+                binding.viewCategory.layoutManager =
+                    LinearLayoutManager(this@IntroActivity, LinearLayoutManager.HORIZONTAL, false)
+                binding.viewCategory.adapter = CategoryAdapter(it)
+                binding.progressBar1.visibility = View.GONE
+            })
+            viewModel.loadCategory()
+        }
     }
 
     private fun initTopVeterinaries() {
@@ -62,5 +64,4 @@ class IntroActivity : AppCompatActivity() {
             viewModel.loadVeterinaries()
         }
     }
-
 }
