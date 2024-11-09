@@ -3,6 +3,7 @@ package com.example.veterinaria16.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import clinica.veterinaria16.databinding.ActivityDetailBinding
 import com.bumptech.glide.Glide
@@ -11,13 +12,20 @@ import com.example.veterinaria16.Domain.Veterinary
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private lateinit var item : Veterinary
+    private var isFavorite : Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.marcarConsulta.setOnClickListener {
+            Toast.makeText(this, "Você não tem nenhum pet cadastrado ainda!", Toast.LENGTH_SHORT).show()
+        }
+
         getBundle()
     }
+
 
     private fun getBundle() {
         item = intent.getParcelableExtra("Object")!!

@@ -36,6 +36,7 @@
                 />
 
             <ImageView
+                android:id="@+id/favorito"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginStart="300dp"

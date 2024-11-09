@@ -7,7 +7,7 @@ data class Veterinary(
     val Address : String = "",
     val Biography : String = "",
     val Experience : Int = 0,
-    private val Id : Int = 0,
+    val Id : Int = 0,
     val Telephone : String = "",
     val Name : String = "",
     val Speciality : String = "",

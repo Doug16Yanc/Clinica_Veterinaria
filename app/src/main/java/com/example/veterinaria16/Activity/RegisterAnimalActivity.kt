@@ -12,7 +12,7 @@ import com.example.veterinaria16.Domain.Animal
 import com.example.veterinaria16.Domain.enums.Category
 import com.example.veterinaria16.Domain.enums.SexAnimal
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
@@ -21,33 +21,39 @@ import java.util.Locale
 class RegisterAnimalActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityRegisterAnimalBinding
-    private lateinit var auth : FirebaseAuth
-    private lateinit var database : DatabaseReference
     private lateinit var intent : Intent
+    private var database = FirebaseDatabase.getInstance().getReference("Customer")
+    private var auth = FirebaseAuth.getInstance()
+    private var currentUser = auth.currentUser
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterAnimalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         var register = binding.registerBtn
         var cancel = binding.cancelBtn
 
-        val auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-
         if (currentUser != null) {
-            val customerId = currentUser.uid
+            val customerId = currentUser!!.uid
 
             register.setOnClickListener {
                 val name = binding.name.text.toString().trim()
-                val birthday = binding.birthday.toString().trim()
+                val birthday = binding.birthday.text.toString().trim()
                 val weight = binding.weight.text.toString().toDouble()
                 val category = identifyCategory()
                 val sex = identifySexAnimal()
 
                 if (validateWeight() && validateBirthdayAnimal()) {
-                    registerAnimal(customerId.toInt(), name, weight, birthday, category, sex)
+                    registerAnimal(customerId, name, weight, birthday, category, sex)
                 } else {
                     Toast.makeText(
                         this,
@@ -86,15 +92,15 @@ class RegisterAnimalActivity : AppCompatActivity() {
         }
         return sex
     }
-    private fun registerAnimal(customerId: Int, name: String, weight: Double, birthday: String, category: Category?, sex: SexAnimal?) {
+    private fun registerAnimal(customerId: String, name: String, weight: Double, birthday: String, category: Category?, sex: SexAnimal?) {
         val id = (10000..900000).random()
-        val customerRef = database.child("Customer").child(customerId.toString())
+        val customerRef = database.child(id.toString())
 
-        val animalId = customerRef.child("animals").push().key
+        val animalId = customerRef.child("mutableList").push().key
         if (animalId != null) {
-            val animal = Animal(customerId, id, name, weight, birthday, category, sex)
+            val animal = Animal(customerId.hashCode(), id, name, weight, birthday, category, sex)
 
-            customerRef.child("animals").child(animalId).setValue(animal)
+            customerRef.child("mutableList").child(animalId).setValue(animal)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         customerRef.child("name").get().addOnSuccessListener { snapshot ->
@@ -154,20 +160,21 @@ class RegisterAnimalActivity : AppCompatActivity() {
                 },
                 year, month, day
             )
+            datePickerDialog.show()
         }
         return true
     }
 
-    private fun validateWeight() : Boolean {
-        val isValidWeight = binding.weight.text.any { it.isDigit()}
 
-        if (isValidWeight) {
-            return true
-        }
-        else {
-            Toast.makeText(this, "O peso deve conter números", Toast.LENGTH_SHORT).show()
-            return false
+    private fun validateWeight(): Boolean {
+        return try {
+            val weight = binding.weight.text.toString().toDouble()
+            weight > 0
+        } catch (e: NumberFormatException) {
+            Toast.makeText(this, "O peso deve ser um número válido.", Toast.LENGTH_SHORT).show()
+            false
         }
     }
+
 
 }

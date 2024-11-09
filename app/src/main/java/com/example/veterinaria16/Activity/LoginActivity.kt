@@ -75,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
                             val intent = Intent(this@LoginActivity, IntroActivity::class.java)
                             startActivity(intent)
                             finish()
+                           // authenticateUser(binding.editText1.text.toString(), binding.editText2.toString(),
                         } else {
                             Toast.makeText(applicationContext, "Login inválido", Toast.LENGTH_SHORT)
                                 .show()
@@ -84,4 +85,25 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun authenticateUser(email: String, password: String, callback : (String?) -> Unit) {
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val currentUser = FirebaseAuth.getInstance().currentUser
+                    if (currentUser != null) {
+                        val customerId = currentUser.uid
+                        callback(customerId)
+                    }
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Falha na autenticação. Tente novamente.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    callback(null);
+                }
+            }
+    }
+
 }

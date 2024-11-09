@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 data class AnimalCategory(
     val Curiosity : String = "",
-    private val Id : Int = 0,
+    val Id : Int = 0,
     val Image: String = "",
     val Name : String = ""
 ) : Parcelable {

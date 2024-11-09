@@ -11,11 +11,13 @@ class DetailAnimalActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailAnimalBinding
     private lateinit var item : AnimalCategory
+    private var isFavorite : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailAnimalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         getBundle()
     }

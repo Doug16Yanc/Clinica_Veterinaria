@@ -7,15 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import clinica.veterinaria16.databinding.ActivityRegisterBinding
 import com.example.veterinaria16.Domain.Customer
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import org.mindrot.jbcrypt.BCrypt
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityRegisterBinding
-    private lateinit var auth : FirebaseAuth
-    private lateinit var database : DatabaseReference
+    //private lateinit var auth : FirebaseAuth
     private lateinit var intent : Intent
 
+    var auth = FirebaseAuth.getInstance()
+    var database = FirebaseDatabase.getInstance().getReference("Customer")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,27 +61,30 @@ class RegisterActivity : AppCompatActivity() {
 
         val id = (10000..900000).random()
 
-        database.child(id.toString())
-        auth = FirebaseAuth.getInstance()
-
 
         if (binding.password.text.toString() == binding.confirmPassword.text.toString()) {
+
 
             auth.createUserWithEmailAndPassword(
                 binding.email.text.toString(),
                 binding.password.text.toString()
             )
+
                 .addOnCompleteListener(this){
                     task ->
                     if (task.isSuccessful) {
-                        val customer = Customer(id, name, cpf, telephone, email, mutableListOf())
-                        database.child("Customer").setValue(customer).addOnCompleteListener {
+                        val passwordHash = BCrypt.hashpw(password, BCrypt.gensalt())
+                        val customer = Customer(id, name, cpf, telephone, email, passwordHash, mutableListOf())
+                        database.child(id.toString()).setValue(customer).addOnCompleteListener {
                             if (it.isSuccessful) {
                                 Toast.makeText(
                                     this,
                                     "Cliente registrado com sucesso",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                                startActivity(intent)
+                                finish()
                             } else {
                                 Toast.makeText(this, "Erro ao salvar dados de cliente.", Toast.LENGTH_SHORT)
                                     .show()
@@ -90,7 +95,6 @@ class RegisterActivity : AppCompatActivity() {
         }
         clearFields()
     }
-
 
     fun validateName(): Boolean {
         val isNameValid = binding.name.text.isNotEmpty()
@@ -104,14 +108,13 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun validateCPF(): Boolean {
-        val isCPFValid = binding.cpf.text.toString()
-            .isEmpty() || binding.cpf.text.toString().length != 11 || !binding.cpf.text.toString()
-            .matches(Regex("\\d+"))
+        val isCPFValid = binding.cpf.text.isNotEmpty()/* || binding.cpf.text.toString().length != 11 || !binding.cpf.text.toString()
+            .matches(Regex("\\d+"))*/
 
         if (isCPFValid) {
             return true
         } else {
-            Toast.makeText(this, "CPF inválido.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "CPF inválido.", Toast.LENGTH_LONG).show()
             return false
         }
     }
@@ -128,13 +131,13 @@ class RegisterActivity : AppCompatActivity() {
     fun validateTelephone(): Boolean {
         var valid: Boolean
         val isTelephoneValid = binding.telephone.text.toString()
-            .isEmpty() || binding.telephone.text.toString().length < 10 || !binding.telephone.text.toString()
-            .matches(Regex("\\d+"))
+            .isNotEmpty() /*|| binding.telephone.text.toString().length < 10 || !binding.telephone.text.toString()
+            .matches(Regex("\\d+"))*/
 
         if (isTelephoneValid) {
             return true
         } else {
-            Toast.makeText(this, "Telefone inválido.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Telefone inválido.", Toast.LENGTH_LONG).show()
             return false
         }
     }
@@ -162,7 +165,7 @@ class RegisterActivity : AppCompatActivity() {
     fun validatePassword(): Boolean {
         val password = binding.password
         val isPasswordValid =
-            password.text.isNotEmpty() && password.text.length <= 6
+            password.text.isNotEmpty() && password.text.length >= 6
           //  password.text.isNotEmpty() && password.text.length <= 12 && password.text.any { it.isUpperCase() } && password.text.any { it.isDigit() }
 
         if (isPasswordValid) {
@@ -191,7 +194,7 @@ class RegisterActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                Toast.makeText(this, "Senhas incoerentes,", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Senhas incoerentes!", Toast.LENGTH_SHORT).show()
             }
             return false
         }
